@@ -3,132 +3,451 @@
 START : FUNC_BUILD_KERNEL
 ==============================================
 
-build common config=exynos7420-zerolte_EdYoBlue_defconfig 
-build variant config=zerolte 
-rm files in : /home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/*.dtb
-rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/*.dtb': Aucun fichier ou dossier de ce type
-rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/boot.img-dtb': Aucun fichier ou dossier de ce type
-rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/boot.img-zImage': Aucun fichier ou dossier de ce type
-Kconfig:15:warning: environment variable ANDROID_MAJOR_VERSION undefined
+build common config=exynos7420-zeroflte_defconfig 
+build variant config=zeroflte 
+rm files in : /home/builder/SM/arch/arm64/boot/dts/*.dtb
+rm: cannot remove '/home/builder/SM/arch/arm64/boot/dts/*.dtb': No such file or directory
+rm: cannot remove '/home/builder/SM/arch/arm64/boot/dtb/*.dtb': No such file or directory
+rm: cannot remove '/home/builder/SM/arch/arm64/boot/boot.img-dtb': No such file or directory
+rm: cannot remove '/home/builder/SM/arch/arm64/boot/boot.img-zImage': No such file or directory
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  SHIPPED scripts/kconfig/zconf.tab.c
+  SHIPPED scripts/kconfig/zconf.lex.c
+  SHIPPED scripts/kconfig/zconf.hash.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+In file included from scripts/kconfig/zconf.tab.c:2503:0:
+scripts/kconfig/menu.c: In function ‘get_symbol_str’:
+scripts/kconfig/menu.c:567:18: warning: ‘jump’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     jump->offset = r->len - 1;
+     ~~~~~~~~~~~~~^~~~~~~~~~~~
+scripts/kconfig/menu.c:528:19: note: ‘jump’ was declared here
+  struct jump_key *jump;
+                   ^~~~
+  HOSTLD  scripts/kconfig/conf
 #
 # configuration written to .config
 #
 scripts/kconfig/conf --silentoldconfig Kconfig
-Kconfig:15:warning: environment variable ANDROID_MAJOR_VERSION undefined
-INFO: CC is /home/remy/work/android/kernel/exynos7420/aarch64-sabermod-7.0/bin/aarch64-gcc
+INFO: CC is /home/builder/toolchain/5.3/bin/aarch64-linux-android-gcc
+  WRAP    arch/arm64/include/generated/asm/bug.h
+  WRAP    arch/arm64/include/generated/asm/bugs.h
+  WRAP    arch/arm64/include/generated/asm/checksum.h
+  WRAP    arch/arm64/include/generated/asm/clkdev.h
+  WRAP    arch/arm64/include/generated/asm/cputime.h
+  WRAP    arch/arm64/include/generated/asm/current.h
+  WRAP    arch/arm64/include/generated/asm/delay.h
   CHK     include/generated/uapi/linux/version.h
+  WRAP    arch/arm64/include/generated/asm/div64.h
+  WRAP    arch/arm64/include/generated/asm/dma.h
+  UPD     include/generated/uapi/linux/version.h
+  WRAP    arch/arm64/include/generated/asm/emergency-restart.h
+  WRAP    arch/arm64/include/generated/asm/early_ioremap.h
+  WRAP    arch/arm64/include/generated/asm/ftrace.h
+  WRAP    arch/arm64/include/generated/asm/hw_irq.h
+  WRAP    arch/arm64/include/generated/asm/errno.h
+  WRAP    arch/arm64/include/generated/asm/ioctl.h
+  WRAP    arch/arm64/include/generated/asm/ioctls.h
+  WRAP    arch/arm64/include/generated/asm/ipcbuf.h
+  WRAP    arch/arm64/include/generated/asm/irq_regs.h
   CHK     include/generated/utsrelease.h
-  CC      scripts/mod/devicetable-offsets.s
+  WRAP    arch/arm64/include/generated/asm/kdebug.h
+  WRAP    arch/arm64/include/generated/asm/kmap_types.h
+  WRAP    arch/arm64/include/generated/asm/kvm_para.h
+  UPD     include/generated/utsrelease.h
+  WRAP    arch/arm64/include/generated/asm/local.h
+  WRAP    arch/arm64/include/generated/asm/local64.h
+  WRAP    arch/arm64/include/generated/asm/mman.h
+  WRAP    arch/arm64/include/generated/asm/msgbuf.h
+  WRAP    arch/arm64/include/generated/asm/mutex.h
+  WRAP    arch/arm64/include/generated/asm/pci.h
+  WRAP    arch/arm64/include/generated/asm/poll.h
+  WRAP    arch/arm64/include/generated/asm/posix_types.h
+  WRAP    arch/arm64/include/generated/asm/resource.h
+  WRAP    arch/arm64/include/generated/asm/rwsem.h
+  WRAP    arch/arm64/include/generated/asm/scatterlist.h
+  WRAP    arch/arm64/include/generated/asm/sections.h
+  WRAP    arch/arm64/include/generated/asm/segment.h
+  WRAP    arch/arm64/include/generated/asm/sembuf.h
+  WRAP    arch/arm64/include/generated/asm/serial.h
+  WRAP    arch/arm64/include/generated/asm/shmbuf.h
+  WRAP    arch/arm64/include/generated/asm/simd.h
+  WRAP    arch/arm64/include/generated/asm/sizes.h
+  WRAP    arch/arm64/include/generated/asm/socket.h
+  WRAP    arch/arm64/include/generated/asm/sockios.h
+  WRAP    arch/arm64/include/generated/asm/switch_to.h
+  WRAP    arch/arm64/include/generated/asm/swab.h
+  WRAP    arch/arm64/include/generated/asm/termbits.h
+  WRAP    arch/arm64/include/generated/asm/termios.h
+  WRAP    arch/arm64/include/generated/asm/topology.h
+  WRAP    arch/arm64/include/generated/asm/trace_clock.h
+  WRAP    arch/arm64/include/generated/asm/types.h
+  WRAP    arch/arm64/include/generated/asm/unaligned.h
+  WRAP    arch/arm64/include/generated/asm/user.h
+  WRAP    arch/arm64/include/generated/asm/vga.h
+  WRAP    arch/arm64/include/generated/asm/xor.h
+  WRAP    arch/arm64/include/generated/uapi/asm/kvm_para.h
+  HOSTCC  scripts/dtc/checks.o
+  HOSTCC  scripts/dtc/data.o
+  CC      kernel/bounds.s
+  GEN     include/generated/bounds.h
+  CC      arch/arm64/kernel/asm-offsets.s
+  SHIPPED scripts/dtc/dtc-lexer.lex.c
+  SHIPPED scripts/dtc/dtc-parser.tab.h
+  SHIPPED scripts/dtc/dtc-parser.tab.c
+  HOSTCC  scripts/dtc/dtc.o
+  GEN     include/generated/asm-offsets.h
   CALL    scripts/checksyscalls.sh
+  HOSTCC  scripts/dtc/flattree.o
+  HOSTCC  scripts/dtc/fstree.o
+  CC      scripts/mod/empty.o
+  HOSTCC  scripts/mod/mk_elfconfig
+  HOSTCC  scripts/dtc/livetree.o
+  CC      scripts/mod/devicetable-offsets.s
+  MKELF   scripts/mod/elfconfig.h
   GEN     scripts/mod/devicetable-offsets.h
+  HOSTCC  scripts/mod/modpost.o
+  HOSTCC  scripts/dtc/srcpos.o
+  HOSTCC  scripts/dtc/treesource.o
+  HOSTCC  scripts/dtc/util.o
+  HOSTCC  scripts/dtc/dtc-lexer.lex.o
+  HOSTCC  scripts/mod/sumversion.o
   HOSTCC  scripts/mod/file2alias.o
-/home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
+  HOSTCC  scripts/dtc/dtc-parser.tab.o
+  HOSTLD  scripts/dtc/dtc
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  HOSTCC  scripts/selinux/mdp/mdp
   HOSTLD  scripts/mod/modpost
-  CHK     include/generated/compile.h
-  CC      drivers/battery/max77843_charger.o
-  LD      firmware/built-in.o
-make[1]: rien à faire pour « dtbs ».
-  CC      drivers/gud/TlcTui/platforms/exynos7420/tui-hal.o
-  LD      drivers/input/keyboard/built-in.o
-  LD      drivers/input/built-in.o
-  LD      drivers/battery/built-in.o
-  LD      drivers/gud/TlcTui/TlcTui.o
-  LD      drivers/gud/TlcTui/built-in.o
-  LD      drivers/gud/built-in.o
-  LD      drivers/misc/built-in.o
-/home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
-  CC      drivers/video/exynos/decon/panels/dsim_panel.o
-  CC      drivers/video/exynos/decon/panels/dimming_core.o
-  CC      drivers/video/exynos/decon/vpp/vpp_drv.o
-  CC      drivers/video/exynos/decon/vpp/vpp_regs.o
-  CC      drivers/video/exynos/decon/decon_core.o
-  CC      drivers/video/exynos/decon/vpp/vpp_coef.o
-  CC      drivers/video/exynos/decon/panels/lcd_sysfs.o
-  CC      drivers/video/exynos/decon/decon-int_drv.o
-  LD      drivers/video/exynos/decon/vpp/vpp.o
-  LD      drivers/video/exynos/decon/vpp/built-in.o
-  CC      drivers/video/exynos/decon/decon-ext_drv.o
-  CC      drivers/video/exynos/decon/panels/s6e3hf2_wqhd_lcd_ctrl.o
-  CC      drivers/video/exynos/decon/panels/dsim_backlight.o
-  CC      drivers/video/exynos/decon/decon_helper.o
-  CC      drivers/video/exynos/decon/dsim_drv.o
-  LD      drivers/video/exynos/decon/panels/built-in.o
-  CC      drivers/video/exynos/decon/dsim_reg_7420.o
-  CC      drivers/video/exynos/decon/decon_reg_7420.o
-  LD      drivers/video/exynos/decon/dsim.o
-  LD      drivers/video/exynos/decon/decon.o
-  LD      drivers/video/exynos/decon/built-in.o
-  LD      drivers/video/exynos/built-in.o
-  LD      drivers/video/built-in.o
-  LD      drivers/built-in.o
-  LINK    vmlinux
-  LD      vmlinux.o
-  MODPOST vmlinux.o
-  GEN     .version
+  HOSTCC  scripts/kallsyms
+  HOSTCC  scripts/conmakehash
+  HOSTCC  scripts/sortextable
+scripts/sortextable.c:68:1: warning: ‘succeed_file’ defined but not used [-Wunused-function]
+ succeed_file(void)
+ ^~~~~~~~~~~~
+In file included from scripts/sortextable.c:166:0:
+scripts/sortextable.c: In function ‘main’:
+scripts/sortextable.h:158:3: warning: ‘relocs_size’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   memset(relocs, 0, relocs_size);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+scripts/sortextable.h:104:6: note: ‘relocs_size’ was declared here
+  int relocs_size;
+      ^~~~~~~~~~~
+In file included from scripts/sortextable.c:164:0:
+scripts/sortextable.h:158:3: warning: ‘relocs_size’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   memset(relocs, 0, relocs_size);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+scripts/sortextable.h:104:6: note: ‘relocs_size’ was declared here
+  int relocs_size;
+      ^~~~~~~~~~~
+  CC      init/main.o
+  HOSTCC  usr/gen_init_cpio
+  GEN     usr/initramfs_data.cpio
+  AS      usr/initramfs_data.o
+  LD      usr/built-in.o
+  CC      arch/arm64/kernel/swp_emulate.o
   CHK     include/generated/compile.h
   UPD     include/generated/compile.h
+  CC      init/do_mounts.o
+  CC      arch/arm64/kernel/pcibios.o
+  LDS     arch/arm64/kernel/vdso/vdso.lds
+  VDSOA arch/arm64/kernel/vdso/gettimeofday.o
+  VDSOA arch/arm64/kernel/vdso/note.o
+  VDSOA arch/arm64/kernel/vdso/sigreturn.o
+  VDSOL arch/arm64/kernel/vdso/vdso.so.dbg
+  OBJCOPY arch/arm64/kernel/vdso/vdso.so
+  VDSOSYM arch/arm64/kernel/vdso/vdso-offsets.h
+  AS      arch/arm64/kernel/vdso/vdso.o
+  LD      arch/arm64/kernel/vdso/built-in.o
+  AS      arch/arm64/kernel/head.o
+  LDS     arch/arm64/kernel/vmlinux.lds
+  CC      arch/arm64/kernel/cputable.o
+  CC      init/do_mounts_rd.o
+  CC      arch/arm64/kernel/debug-monitors.o
+  AS      arch/arm64/kernel/entry.o
+  CC      init/do_mounts_initrd.o
+  CC      arch/arm64/kernel/irq.o
+  CC      arch/arm64/kernel/fpsimd.o
+  CC      init/do_mounts_dm.o
+  AS      arch/arm64/kernel/entry-fpsimd.o
+  CC      arch/arm64/kernel/process.o
+  CC      init/initramfs.o
+  CC      arch/arm64/kernel/ptrace.o
+  CC      init/calibrate.o
+  CC      init/init_task.o
   CC      init/version.o
+  CC      arch/arm64/kernel/setup.o
+  LD      init/mounts.o
   LD      init/built-in.o
-  KSYM    .tmp_kallsyms1.o
-  KSYM    .tmp_kallsyms2.o
-  LD      vmlinux
-  SORTEX  vmlinux
-  SYSMAP  System.map
-  FIPS : Generating hmac of fmp and updating vmlinux... 
-HMAC-SHA256(builtime_bytes.bin)= 248d657b5656787557378dda541eec15c914bd452ad51a796a094ee3e1fa11a6
-  FIPS : Generating hmac of crypto and updating vmlinux... 
-HMAC-SHA256(builtime_bytes.bin)= beddaa801d313c32809323ff6593cb6580fc5bec0eb4bdf5f5dd5f12254b9298
-  OBJCOPY arch/arm64/boot/Image
-  Building modules, stage 2.
-  MODPOST 2 modules
-  GZIP    arch/arm64/boot/Image.gz
-/home/remy/work/android/kernel/exynos7420/kernel/scripts/Makefile.fwinst:45: la cible « /lib/firmware/tsp_stm/stm_z1.fw » apparaît plus d'une fois dans la même règle.
-/home/remy/work/android/kernel/exynos7420/kernel/scripts/Makefile.fwinst:45: la cible « /lib/firmware/abov/abov_valley.fw » apparaît plus d'une fois dans la même règle.
-Processing dts files...
-=> Processing: exynos7420-zerolte_eur_open_06.dts
-=> Generating: exynos7420-zerolte_eur_open_06.dtb
-Warning (device_type_is_string): "device_type" property in /rgb is not a string
-=> Processing: exynos7420-zerolte_eur_open_07.dts
-=> Generating: exynos7420-zerolte_eur_open_07.dtb
-Warning (device_type_is_string): "device_type" property in /rgb is not a string
-=> Processing: exynos7420-zerolte_eur_open_08.dts
-=> Generating: exynos7420-zerolte_eur_open_08.dtb
-Warning (device_type_is_string): "device_type" property in /rgb is not a string
-Generating dtb.img...
-=> Found compatible entry: samsung,ZERO LTE EUR EVT1 mPOP,r05
-    (chip: 7420, hw_rev: 8, hw_rev_end: 9)
-=> Found compatible entry: samsung,ZERO LTE EUR EVT1 mPOP,r06
-    (chip: 7420, hw_rev: 10, hw_rev_end: 10)
-=> Found compatible entry: samsung,ZERO LTE EUR EVT1 mPOP,r07
-    (chip: 7420, hw_rev: 11, hw_rev_end: 255)
-Done.
-
-=================================
-END   : FUNC_BUILD_KERNEL
-=================================
-
-[3J[H[2J 
-Android Image Kitchen - RepackImg Script
-by osm0sis @ xda-developers
- 
-Warning: Overwriting existing files!
- 
-Packing ramdisk...
- 
-Using compression: gzip
- 
-Getting build information...
-kernel = boot.img-zImage
-cmdline = 
-board = SYSMAGIC002KU
-base = 10000000
-pagesize = 2048
-kernel_offset = 00008000
-ramdisk_offset = 01000000
-tags_offset = 00000100
-dtb = boot.img-dtb
- 
-Building image...
- 
-Done!
-Total compile time is 31 seconds
+  CC      arch/arm64/kernel/signal.o
+  CC      arch/arm64/kernel/sys.o
+  CC      arch/arm64/kernel/stacktrace.o
+  CC      arch/arm64/kernel/time.o
+  CC      arch/arm64/kernel/traps.o
+  CC      arch/arm64/kernel/io.o
+  CC      arch/arm64/kernel/vdso.o
+  AS      arch/arm64/kernel/hyp-stub.o
+  CC      arch/arm64/kernel/psci.o
+  CC      arch/arm64/kernel/cpu_ops.o
+  CC      arch/arm64/kernel/insn.o
+  CC      arch/arm64/kernel/return_address.o
+  CC      arch/arm64/kernel/opcodes.o
+  AS      arch/arm64/kernel/sys32.o
+  AS      arch/arm64/kernel/kuser32.o
+  CC      arch/arm64/kernel/signal32.o
+  CC      arch/arm64/kernel/sys_compat.o
+  CC      arch/arm64/kernel/arm64ksyms.o
+  CC      arch/arm64/kernel/module.o
+  CC      arch/arm64/kernel/smp.o
+  CC      arch/arm64/kernel/smp_spin_table.o
+  CC      arch/arm64/kernel/topology.o
+  CC      arch/arm64/kernel/perf_regs.o
+  CC      arch/arm64/mm/dma-mapping.o
+  CC      arch/arm64/kernel/perf_event.o
+  CC      arch/arm64/mm/extable.o
+  CC      arch/arm64/mm/fault.o
+  CC      arch/arm64/kernel/hw_breakpoint.o
+  CC      arch/arm64/mm/init.o
+  AS      arch/arm64/kernel/sleep.o
+  CC      arch/arm64/kernel/suspend.o
+  AS      arch/arm64/kernel/exynos-smc.o
+  AS      arch/arm64/mm/cache.o
+  LD      arch/arm64/kernel/built-in.o
+  CC      arch/arm64/mm/copypage.o
+  CC      arch/arm64/crypto/first_file_asm.o
+  CC      arch/arm64/crypto/aes-glue-ce.o
+  CC      arch/arm64/mm/flush.o
+  CC      arch/arm64/mm/ioremap.o
+  AS      arch/arm64/crypto/aes-ce.o
+  CC      arch/arm64/crypto/sha1-ce-glue.o
+  CC      arch/arm64/mm/iomap.o
+  AS      arch/arm64/crypto/sha1-ce-core.o
+  CC      arch/arm64/crypto/aes-ce-cipher.o
+  CC      arch/arm64/mm/mmap.o
+  LD      arch/arm64/crypto/aes-ce-blk.o
+  CC      arch/arm64/crypto/last_file_asm.o
+  LD      arch/arm64/crypto/sha1-ce.o
+  LD      arch/arm64/crypto/built-in.o
+  CC      arch/arm64/mach-exynos/common.o
+  CC      arch/arm64/mm/pgd.o
+  CC      arch/arm64/mm/mmu.o
+  CC      arch/arm64/mach-exynos/pm_domains-exynos7420.o
+  CC      arch/arm64/mm/context.o
+  CC      arch/arm64/mach-exynos/exynos-pm.o
+  AS      arch/arm64/mm/tlb.o
+  AS      arch/arm64/mm/proc.o
+  LD      arch/arm64/mm/built-in.o
+  CC      arch/arm64/mach-exynos/pm_domains.o
+  CC      arch/arm64/mach-exynos/pm_domains_sysfs.o
+  CC      arch/arm64/mach-exynos/pmu.o
+  CC      arch/arm64/mach-exynos/pmu_cal_sys.o
+  CC      arch/arm64/mach-exynos/exynos-powermode.o
+  CC      arch/arm64/plat-samsung/init.o
+  CC      arch/arm64/plat-samsung/cpu.o
+  CC      arch/arm64/mach-exynos/pm.o
+  LD      arch/arm64/plat-samsung/built-in.o
+  CC      kernel/fork.o
+  CC      arch/arm64/mach-exynos/pmu_cal_sys_exynos7420.o
+  CC      kernel/exec_domain.o
+  CC      kernel/panic.o
+  CC      arch/arm64/mach-exynos/asv-exynos.o
+  CC      kernel/printk.o
+  CC      arch/arm64/mach-exynos/asv-exynos_cal.o
+  CC      arch/arm64/mach-exynos/mach-universal7420.o
+  CC      arch/arm64/mach-exynos/asv-exynos7420_cal.o
+  CC      kernel/printk_interface.o
+  CC      kernel/cpu.o
+  CC      arch/arm64/mach-exynos/setup-fimc-is.o
+  CC      kernel/exit.o
+  CC      arch/arm64/mach-exynos/setup-fimc-is-sensor.o
+  CC      arch/arm64/mach-exynos/setup-fimc-is-module.o
+  CC      kernel/itimer.o
+  CC      arch/arm64/mach-exynos/setup-fimc-is-companion.o
+  CC      arch/arm64/mach-exynos/exynos-smc.o
+  HZFILE  kernel/hz.bc
+  CC      kernel/softirq.o
+  CC      arch/arm64/mach-exynos/setup-exynos5-mipiphy.o
+  CC      arch/arm64/mach-exynos/secmem.o
+  CC      kernel/resource.o
+  LD      arch/arm64/mach-exynos/built-in.o
+  CC      mm/filemap.o
+  CC      kernel/sysctl.o
+  CC      kernel/sysctl_binary.o
+  CC      mm/mempool.o
+  CC      kernel/capability.o
+  CC      mm/oom_kill.o
+  CC      kernel/ptrace.o
+  CC      mm/fadvise.o
+  CC      mm/maccess.o
+  CC      mm/page_alloc.o
+  CC      kernel/timer.o
+  CC      kernel/user.o
+  CC      kernel/signal.o
+  CC      mm/page-writeback.o
+  CC      mm/readahead.o
+  CC      kernel/sys.o
+  CC      mm/swap.o
+  CC      mm/truncate.o
+  CC      kernel/kmod.o
+  CC      mm/vmscan.o
+  CC      kernel/workqueue.o
+  CC      mm/shmem.o
+  CC      kernel/pid.o
+  CC      kernel/task_work.o
+  CC      kernel/rcupdate.o
+  CC      kernel/extable.o
+  CC      mm/util.o
+  CC      kernel/params.o
+  CC      mm/mmzone.o
+  CC      kernel/posix-timers.o
+  CC      mm/vmstat.o
+  CC      kernel/kthread.o
+  CC      mm/backing-dev.o
+  CC      kernel/wait.o
+  CC      mm/mm_init.o
+  CC      kernel/sys_ni.o
+  CC      kernel/posix-cpu-timers.o
+  CC      mm/mmu_context.o
+  CC      mm/percpu.o
+  CC      kernel/mutex.o
+  CC      kernel/hrtimer.o
+  CC      mm/slab_common.o
+  CC      mm/compaction.o
+  CC      kernel/rwsem.o
+  CC      kernel/nsproxy.o
+  CC      mm/balloon_compaction.o
+  CC      kernel/srcu.o
+  CC      mm/vmacache.o
+  CC      kernel/semaphore.o
+  CC      mm/interval_tree.o
+  CC      kernel/notifier.o
+  CC      mm/fremap.o
+  CC      kernel/ksysfs.o
+  CC      kernel/cred.o
+  CC      mm/highmem.o
+  CC      mm/madvise.o
+  CC      kernel/async.o
+  CC      kernel/range.o
+  CC      kernel/groups.o
+  CC      mm/memory.o
+mm/memory.c: In function 'stack_guard_page':
+mm/memory.c:1688:9: error: implicit declaration of function 'stack_guard_page_start' [-Werror=implicit-function-declaration]
+mm/memory.c:1689:9: error: implicit declaration of function 'stack_guard_page_end' [-Werror=implicit-function-declaration]
+In file included from mm/memory.c:42:0:
+mm/memory.c: In function 'check_stack_guard_page':
+include/linux/mm.h:1647:40: warning: statement with no effect [-Wunused-value]
+mm/memory.c:3258:3: note: in expansion of macro 'expand_upwards'
+  CC      kernel/lglock.o
+  CC      kernel/smpboot.o
+  CC      kernel/cpu/idle.o
+  LD      kernel/cpu/built-in.o
+  CC      kernel/events/core.o
+cc1: some warnings being treated as errors
+scripts/Makefile.build:308: recipe for target 'mm/memory.o' failed
+make[1]: *** [mm/memory.o] Error 1
+Makefile:870: recipe for target 'mm' failed
+make: *** [mm] Error 2
+make: *** Waiting for unfinished jobs....
+  CC      kernel/events/ring_buffer.o
+  CC      kernel/events/callchain.o
+  CC      kernel/events/hw_breakpoint.o
+  CC      kernel/irq/irqdesc.o
+  CC      kernel/irq/handle.o
+  CC      kernel/irq/manage.o
+  LD      kernel/events/built-in.o
+  CC      kernel/power/qos.o
+  CC      kernel/irq/spurious.o
+  CC      kernel/irq/resend.o
+  CC      kernel/power/main.o
+  CC      kernel/irq/chip.o
+  CC      kernel/power/console.o
+  CC      kernel/irq/dummychip.o
+  CC      kernel/power/process.o
+  CC      kernel/irq/devres.o
+  CC      kernel/irq/generic-chip.o
+  CC      kernel/power/suspend.o
+  CC      kernel/irq/autoprobe.o
+  CC      kernel/irq/irqdomain.o
+  CC      kernel/power/powersuspend.o
+  CC      kernel/power/autosleep.o
+  CC      kernel/irq/proc.o
+  CC      kernel/power/wakelock.o
+  CC      kernel/irq/pm.o
+  CC      kernel/power/suspend_time.o
+  LD      kernel/irq/built-in.o
+  CC      kernel/sched/core.o
+  CC      kernel/power/quickwakeup.o
+  CC      kernel/power/poweroff.o
+  CC      kernel/power/wakeup_reason.o
+  LD      kernel/power/built-in.o
+  CC      kernel/time/timekeeping.o
+  CC      kernel/time/ntp.o
+  CC      kernel/time/clocksource.o
+  CC      kernel/time/jiffies.o
+  CC      kernel/time/timer_list.o
+  CC      kernel/time/timeconv.o
+  CC      kernel/sched/clock.o
+  CC      kernel/time/posix-clock.o
+  CC      kernel/sched/cputime.o
+  CC      kernel/time/alarmtimer.o
+  CC      kernel/sched/idle_task.o
+  CC      kernel/sched/fair.o
+  CC      kernel/time/clockevents.o
+  CC      kernel/time/tick-common.o
+  CC      kernel/time/sched_clock.o
+  CC      kernel/time/tick-oneshot.o
+  CC      kernel/time/tick-sched.o
+  LD      kernel/time/built-in.o
+  CC      kernel/trace/trace_clock.o
+  CC      kernel/trace/ring_buffer.o
+  CC      kernel/sched/rt.o
+  CC      kernel/trace/trace.o
+  CC      kernel/sched/stop_task.o
+  CC      kernel/sched/cpupri.o
+  CC      kernel/sched/debug.o
+  CC      kernel/sched/cpuacct.o
+  LD      kernel/sched/built-in.o
+  CC      kernel/freezer.o
+  CC      kernel/profile.o
+  CC      kernel/trace/trace_output.o
+  CC      kernel/stacktrace.o
+  CC      kernel/futex.o
+  CC      kernel/trace/trace_stat.o
+  CC      kernel/trace/trace_printk.o
+  CC      kernel/futex_compat.o
+  CC      kernel/trace/trace_sched_switch.o
+  CC      kernel/rtmutex.o
+  CC      kernel/trace/trace_nop.o
+  CC      kernel/smp.o
+  CC      kernel/trace/blktrace.o
+  CC      kernel/trace/trace_events.o
+  CC      kernel/spinlock.o
+  CC      kernel/uid16.o
+  CC      kernel/module.o
+  CC      kernel/trace/trace_export.o
+  CC      kernel/trace/trace_event_perf.o
+  CC      kernel/trace/trace_events_filter.o
+  CC      kernel/kallsyms.o
+  CC      kernel/trace/power-traces.o
+  CC      kernel/compat.o
+  CC      kernel/trace/rpm-traces.o
+  LD      kernel/trace/built-in.o
+  CC      kernel/cgroup.o
+  CC      kernel/cgroup_freezer.o
+  CC      kernel/utsname.o
+  CC      kernel/pid_namespace.o
+  CC      kernel/res_counter.o
+  CC      kernel/stop_machine.o
+  CC      kernel/audit.o
+  CC      kernel/auditfilter.o
+  CC      kernel/hung_task.o
+  CC      kernel/watchdog.o
+  CC      kernel/seccomp.o
+  CC      kernel/rcutree.o
+  CC      kernel/utsname_sysctl.o
+  CC      kernel/tracepoint.o
+  CC      kernel/elfcore.o
+  CC      kernel/irq_work.o
+  CC      kernel/cpu_pm.o
+  BC      kernel/timeconst.h
+  CC      kernel/time.o
+  LD      kernel/built-in.o
