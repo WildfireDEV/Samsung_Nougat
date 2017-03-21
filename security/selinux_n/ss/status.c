@@ -132,3 +132,4 @@ void selinux_status_update_policyload(int seqno)
 	}
 	mutex_unlock(&selinux_status_lock);
 }
+
