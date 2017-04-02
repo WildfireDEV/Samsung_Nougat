@@ -439,7 +439,7 @@ static void __exit aes_exit(void)
 }
 
 #ifdef USE_V8_CRYPTO_EXTENSIONS
-module_cpu_feature_match(AES, aes_init);
+module_cpu_feature_match(x, __init);
 #else
 module_init(aes_init);
 #endif
