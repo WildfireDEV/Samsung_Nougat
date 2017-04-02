@@ -1,0 +1,96 @@
+
+==============================================
+START : FUNC_BUILD_KERNEL
+==============================================
+
+build common config=exynos7420-zeroflte_EdYoBlue_defconfig 
+build variant config=zeroflte 
+rm files in : /home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/*.dtb
+rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/*.dtb': Aucun fichier ou dossier de ce type
+rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/boot.img-dtb': Aucun fichier ou dossier de ce type
+rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/boot.img-zImage': Aucun fichier ou dossier de ce type
+Kconfig:15:warning: environment variable ANDROID_MAJOR_VERSION undefined
+#
+# configuration written to .config
+#
+scripts/kconfig/conf --silentoldconfig Kconfig
+Kconfig:15:warning: environment variable ANDROID_MAJOR_VERSION undefined
+INFO: CC is /home/remy/work/android/kernel/exynos7420/aarch64-sabermod-7.0/bin/aarch64-gcc
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  CC      scripts/mod/devicetable-offsets.s
+  GEN     scripts/mod/devicetable-offsets.h
+  HOSTCC  scripts/mod/file2alias.o
+  CALL    scripts/checksyscalls.sh
+/home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
+  HOSTLD  scripts/mod/modpost
+  CHK     include/generated/compile.h
+make[1]: rien à faire pour « dtbs ».
+/home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
+  OBJCOPY arch/arm64/boot/Image
+  Building modules, stage 2.
+  MODPOST 2 modules
+/home/remy/work/android/kernel/exynos7420/kernel/scripts/Makefile.fwinst:45: la cible « /lib/firmware/tsp_stm/stm_z1.fw » apparaît plus d'une fois dans la même règle.
+/home/remy/work/android/kernel/exynos7420/kernel/scripts/Makefile.fwinst:45: la cible « /lib/firmware/abov/abov_valley.fw » apparaît plus d'une fois dans la même règle.
+  GZIP    arch/arm64/boot/Image.gz
+Processing dts files...
+=> Processing: exynos7420-zeroflte_eur_open_06.dts
+/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts:14:51: fatal error: exynos7420-zeroflte_eur_battery_08.dtsi: Aucun fichier ou dossier de ce type
+ #include "exynos7420-zeroflte_eur_battery_08.dtsi"
+                                                   ^
+compilation terminated.
+=> Generating: exynos7420-zeroflte_eur_open_06.dtb
+ERROR (phandle_references): Reference to non-existent node or label "chg_irq"
+
+ERROR (phandle_references): Reference to non-existent node or label "chg_irq"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR (phandle_references): Reference to non-existent node or label "audio_codec"
+
+ERROR: Input tree has errors, aborting (use -f to force output)
+Generating dtb.img...
+dtbTool: unable to locate any dtbs in the given path
+error: could not load device tree blobs '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dtb/'
+Done.
+
+=================================
+END   : FUNC_BUILD_KERNEL
+=================================
+
+mv: impossible d'évaluer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dtb.img': Aucun fichier ou dossier de ce type
+mv: impossible d'évaluer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/boot.img-dtb': Aucun fichier ou dossier de ce type
+[3J[H[2J 
+Android Image Kitchen - RepackImg Script
+by osm0sis @ xda-developers
+ 
+Packing ramdisk...
+ 
+Using compression: gzip
+ 
+Getting build information...
+kernel = boot.img-zImage
+cmdline = 
+board = SYSMAGIC002KU
+base = 10000000
+pagesize = 2048
+kernel_offset = 00008000
+ramdisk_offset = 01000000
+tags_offset = 00000100
+ 
+Building image...
+ 
+Done!
+Total compile time is 9 seconds
