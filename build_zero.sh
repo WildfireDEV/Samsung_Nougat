@@ -47,7 +47,9 @@ FUNC_BUILD_DTIMAGE_TARGET()
 
 	case $MODEL in
 	zeroflte)
-		DTSFILES="exynos7420-zeroflte_eur_open_06"
+		DTSFILES="exynos7420-zeroflte_eur_open_ds_00
+				exynos7420-zeroflte_eur_open_06
+			  	exynos7420-zeroflte_eur_open_07"
 		;;
 	zerolte)
 		DTSFILES="exynos7420-zerolte_eur_open_08"
