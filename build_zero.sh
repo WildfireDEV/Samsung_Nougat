@@ -52,7 +52,7 @@ FUNC_BUILD_DTIMAGE_TARGET()
 			  	exynos7420-zeroflte_eur_open_07"
 		;;
 	zerolte)
-		DTSFILES="exynos7420-zerolte_eur_open_08"
+		DTSFILES="exynos7420-zerolte_eur_open_06"
 		;;
 	*)
 		echo "Unknown device: $MODEL"
