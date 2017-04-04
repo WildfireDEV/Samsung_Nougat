@@ -18,7 +18,7 @@ DTB_PADDING=0
 
 if [ $MODEL = zerolte ]
 then
-	KERNEL_DEFCONFIG=exynos7420-zeroflte_EdYoBlue_defconfig
+	KERNEL_DEFCONFIG=exynos7420-zerolte_EdYoBlue_defconfig
 else if [ $MODEL = zeroflte ]
 then
 	KERNEL_DEFCONFIG=exynos7420-zeroflte_EdYoBlue_defconfig
@@ -52,7 +52,9 @@ FUNC_BUILD_DTIMAGE_TARGET()
 			  	exynos7420-zeroflte_eur_open_07"
 		;;
 	zerolte)
-		DTSFILES="exynos7420-zerolte_eur_open_06"
+		DTSFILES="exynos7420-zerolte_eur_open_06
+				exynos7420-zerolte_eur_open_07
+				exynos7420-zerolte_eur_open_08"
 		;;
 	*)
 		echo "Unknown device: $MODEL"
