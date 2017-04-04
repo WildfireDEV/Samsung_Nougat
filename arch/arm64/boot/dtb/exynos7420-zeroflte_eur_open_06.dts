@@ -1,8 +1,8 @@
-# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts"
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts"
-# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts"
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts"
+# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts"
 /dts-v1/;
 # 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zero_common.dtsi" 1
 # 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zero_common.dtsi"
@@ -21,18 +21,6 @@
  #address-cells = <1>;
  #size-cells = <1>;
 
- arm-pmu {
-  compatible = "arm,armv8-pmuv3";
-  interrupts = <0 32 4>,
-        <0 33 4>,
-        <0 34 4>,
-        <0 35 4>,
-        <0 56 4>,
-        <0 57 4>,
-        <0 58 4>,
-        <0 59 4>;
- };
-
  aliases {
   pinctrl0 = &pinctrl_0;
   pinctrl1 = &pinctrl_1;
@@ -45,7 +33,6 @@
   pinctrl8 = &pinctrl_8;
   pinctrl9 = &pinctrl_9;
   mshc0 = &dwmmc_0;
-  mshc1 = &dwmmc_1;
   mshc2 = &dwmmc_2;
   mdev0 = &mdev_0;
   vpp0 = &vg_0;
@@ -62,7 +49,7 @@
   uart4 = &serial_4;
   hsi2c0 = &hsi2c_0;
   hsi2c1 = &hsi2c_1;
-                hsi2c2 = &hsi2c_2;
+  hsi2c2 = &hsi2c_2;
   hsi2c3 = &hsi2c_3;
   hsi2c4 = &hsi2c_4;
   hsi2c5 = &hsi2c_5;
@@ -1002,17 +989,6 @@
   status = "disabled";
  };
 
- dwmmc_1: dwmmc1@15750000 {
-  compatible = "samsung,exynos7420-dw-mshc";
-  reg = <0x15750000 0x2000>;
-  interrupts = <0 202 0>;
-  #address-cells = <1>;
-  #size-cells = <0>;
-  clocks = <&clock 180>, <&clock 187>, <&clock 186>;
-  clock-names = "biu", "dout_mmc_a", "gate_ciu";
-  status = "disabled";
-  };
-
  dwmmc_2: dwmmc2@15560000 {
   compatible = "samsung,exynos7420-dw-mshc";
   reg = <0x15560000 0x2000>;
@@ -1125,7 +1101,6 @@
         compatible = "arm,mali";
         reg = <0x14AC0000 0x5000>;
         interrupts = <0 241 0>, <0 242 0>, <0 240 0>;
-        interrupt-names = "JOB", "MMU", "GPU";
         clocks = <&clock 1>, <&clock 10>, <&clock 160>, <&clock 161>, <&clock 162>, <&clock 163>, <&clock 300>, <&clock 301>;
         clock-names = "fin_pll", "fout_g3d_pll", "aclk_g3d", "dout_aclk_g3d", "mout_g3d", "sclk_hpm_g3d", "aclk_lh_g3d0", "aclk_lh_g3d1";
         samsung,power-domain = <&pd_g3d>;
@@ -3569,7 +3544,7 @@
   supports-ddr200-mode;
   enable-cache-control;
   use-enable-shift;
-  qos_int_level = <400000>;
+  qos_int_level = <468000>;
   desc-size = <3>;
   fifo-depth = <0x40>;
   card-detect-delay = <200>;
@@ -3606,7 +3581,7 @@
   use-fine-tuning;
   fifo-depth = <0x40>;
   card-detect-delay = <200>;
-  qos_int_level = <400000>;
+  qos_int_level = <468000>;
   desc-size = <3>;
   bypass-for-allpass;
   fix-fmp-size-mismatch;
@@ -5388,9 +5363,9 @@
    net_boost,node="rmnet0 rmnet1 rmnet2 rmnet3 rmnet4 rmnet5 rmnet6 rmnet7";
    net_boost,table_size = <3>;
    net_boost,table= <
-    100 0 0 1066000 0 836000 0 0 1 0
-    200 0 0 1296000 0 1026000 0 0 1 0
-    300 0 0 1500000 0 1552000 0 0 1 0
+    10 0 0 1104000 0 825000 100000 0 1 0
+    50 0 0 1104000 0 825000 100000 0 1 0
+    100 0 0 1500000 0 825000 100000 0 1 0
     >;
   };
 # 2023 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zero_common.dtsi"
@@ -5411,6 +5386,16 @@
     >;
   };
   boot_device@4 {
+   net_boost,label="WIFI";
+   net_boost,node="wlan0";
+   net_boost,table_size = <3>;
+   net_boost,table= <
+    20 1000000 0 800000 0 0 200000 0 0 0
+    60 1500000 0 1200000 0 0 200000 0 0 0
+    180 1896000 0 1500000 0 543000 267000 1 1 1
+    >;
+  };
+  boot_device@5 {
    net_boost,label="CLAT";
    net_boost,node="clat clat4 v4-rmnet0 v4-rmnet1 v4-rmnet2 v4-rmnet3 v4-rmnet4 v4-rmnet5 v4-rmnet6 v4-rmnet7";
    net_boost,table_size = <3>;
@@ -5421,46 +5406,13 @@
     >;
   };
 
-  boot_device@5 {
+  boot_device@6 {
    net_boost,label="QIPC";
    net_boost,node="rmnet_data0 rmnet_data1 rmnet_data2 rmnet_data3 rmnet_data4 rmnet_data5 rmnet_data6 rmnet_data7";
    net_boost,table_size = <2>;
    net_boost,table= <
     10 0 0 1104000 0 825000 100000 0 1 0
     100 0 0 1500000 0 825000 100000 0 1 0
-    >;
-  };
-
-  boot_device@6 {
-   net_boost,label="WIFI";
-   net_boost,node="wlan0";
-   net_boost,table_size = <2>;
-   net_boost,table= <
-    50 0 0 0 0 0 0 0 0 0
-    300 0 0 0 0 0 0 1 1 1
-    >;
-  };
-
-  boot_device@7 {
-   net_boost,label="WIFI TX";
-   net_boost,node="wlan0";
-   net_boost,table_size = <3>;
-   net_boost,table= <
-    20 1000000 0 800000 0 0 200000 0 0 0
-    60 1664000 0 1200000 0 0 200000 0 0 0
-    180 1896000 0 1586000 0 845000 400000 1 1 1
-    >;
-  };
-
-  boot_device@8 {
-   net_boost,label="WIFI RX";
-   net_boost,node="wlan0";
-   net_boost,table_size = <4>;
-   net_boost,table= <
-    100 1144000 0 1066000 0 0 0 0 0 0
-    150 1456000 0 1378000 0 0 0 0 0 0
-    200 1664000 0 1586000 0 845000 400000 1 1 1
-    300 1896000 0 1586000 0 845000 400000 1 1 1
     >;
   };
  };
@@ -5634,9 +5586,9 @@
   gpios = <&gpr3 3 0>;
  };
 };
-# 14 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts" 2
-# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_battery_06.dtsi" 1
-# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_battery_06.dtsi"
+# 14 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_battery_08.dtsi" 1
+# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_battery_08.dtsi"
 / {
  hsi2c@13670000 {
   status = "okay";
@@ -5702,34 +5654,29 @@
 
   battery,chg_temp_check = <1>;
   battery,wpc_temp_check = <1>;
-  battery,mix_temp_check = <1>;
 
   battery,polling_time = <10 30 30 30 3600>;
 
-  battery,temp_table_adc = <280 326 383 429 489 559 631 727 807 925
-     1015 1114 1217 1341 1448 1545 1625
-       1712 1778 1830 1873 1914 1937>;
-  battery,temp_table_data = <900 850 800 750 700 650 600 550 500 450
-        400 350 300 250 200 150 100
-        50 0 (-50) (-100) (-150) (-200)>;
+  battery,temp_table_adc = <261 307 363 413 563 655 714 754 805 882 1025 1192 1265 1377 1578
+      1798 2032 2268 2493 2720 2959 3155 3266 3340 3495 3627 3727>;
+  battery,temp_table_data = <900 850 800 750 700 650 630 600 580 550 500 450 430 400 350
+       300 250 200 150 100 50 0 (-30) (-50) (-100) (-150) (-200)>;
 
-  battery,chg_temp_table_adc = <499 538 598 717 835 1026 1124
-           1240 1478 1568 1834 2023 2189 2429
-           2631 2851 2948 3053 3239 3325>;
-  battery,chg_temp_table_data = <750 700 650 600 550 500 450
-            400 350 300 250 200 150 100
-            50 0 (-50) (-100) (-150) (-200)>;
+  battery,chg_temp_table_adc = <542 638 665 733 782 855 1000 1168 1237 1341 1530
+          1736 1949 2170 2378 2583 2801 2975 3081 3149 3284 3413 3504>;
+  battery,chg_temp_table_data = <700 650 630 600 580 550 500 450 430 400 350
+         300 250 200 150 100 50 0 (-30) (-50) (-100) (-150) (-200)>;
 
-  battery,input_current_limit = <1800 0 0 1800 460 900 1000 460 1000 0 820 820 820 1900 1800 0 0 400 700 1300 300 1000 1500 0 1667 1000 1667 80 1800 1667 1400 1000 1000 1800>;
-  battery,fast_charging_current = <2050 0 0 2050 460 1200 1000 460 1200 0 1150 1150 1150 1600 2050 0 0 400 700 1300 300 1000 1500 0 2050 1000 2050 80 1800 1000 1400 0 1000 2050>;
-  battery,full_check_current_1st = <275 0 0 275 275 275 275 275 275 0 275 275 275 275 275 0 0 275 275 275 275 275 275 0 275 275 275 0 275 275 275 0 275 275>;
-  battery,full_check_current_2nd = <125 0 0 125 125 125 125 125 125 0 125 125 125 125 125 0 0 125 125 125 125 125 125 0 125 125 125 0 125 125 125 0 125 125>;
+  battery,input_current_limit = <1800 0 0 1800 460 900 1000 460 1000 0 820 820 820 1900 1800 0 0 400 700 1300 300 1000 1500 0 1667 1000 1667 80 1800 1667 1400 1000 1000>;
+  battery,fast_charging_current = <2100 0 0 2100 460 1200 1000 460 1200 0 1200 1200 1200 1600 2100 0 0 400 700 1300 300 1000 1500 0 2550 1000 2550 80 1800 1000 1400 0 1000>;
+  battery,full_check_current_1st = <275 0 0 275 275 275 275 275 275 0 275 275 275 275 275 0 0 275 275 275 275 275 275 0 275 275 275 0 275 275 275 0 275>;
+  battery,full_check_current_2nd = <125 0 0 125 125 125 125 125 125 0 125 125 125 125 125 0 0 125 125 125 125 125 125 0 125 125 125 0 125 125 125 0 125>;
 
-  battery,wireless_cc_cv = <90>;
+  battery,wireless_cc_cv = <86>;
   battery,inbat_voltage = <1>;
 
-  battery,inbat_voltage_table_adc = <3137 3113 3077 3045 3010 2976 2942 2904 2874 2832
-      2794 2763 2723 2693 2660 2623 2589 2552 2517 2481 2464>;
+  battery,inbat_voltage_table_adc = <2838 2811 2796 2763 2737 2708 2681 2638 2597 2568
+      2549 2524 2506 2483 2434 2403 2365 2337 2316 2287 2271>;
   battery,inbat_voltage_table_data = <438 435 430 425 420 415 410 405 400 395
       390 385 380 375 370 365 360 355 350 345 340>;
 
@@ -5754,73 +5701,57 @@
   battery,temp_check_count = <1>;
   battery,temp_highlimit_threshold_event = <800>;
   battery,temp_highlimit_recovery_event = <750>;
-  battery,temp_high_threshold_event = <500>;
-  battery,temp_high_recovery_event = <450>;
-  battery,temp_low_threshold_event = <0>;
-  battery,temp_low_recovery_event = <50>;
+  battery,temp_high_threshold_event = <700>;
+  battery,temp_high_recovery_event = <460>;
+  battery,temp_low_threshold_event = <(-30)>;
+  battery,temp_low_recovery_event = <0>;
   battery,temp_highlimit_threshold_normal = <800>;
   battery,temp_highlimit_recovery_normal = <750>;
-  battery,temp_high_threshold_normal = <500>;
-  battery,temp_high_recovery_normal = <450>;
-  battery,temp_low_threshold_normal = <0>;
-  battery,temp_low_recovery_normal = <50>;
+  battery,temp_high_threshold_normal = <600>;
+  battery,temp_high_recovery_normal = <460>;
+  battery,temp_low_threshold_normal = <(-50)>;
+  battery,temp_low_recovery_normal = <0>;
   battery,temp_highlimit_threshold_lpm = <800>;
   battery,temp_highlimit_recovery_lpm = <750>;
-  battery,temp_high_threshold_lpm = <500>;
-  battery,temp_high_recovery_lpm = <450>;
-  battery,temp_low_threshold_lpm = <0>;
-  battery,temp_low_recovery_lpm = <50>;
-  battery,wpc_high_threshold_normal = <450>;
-  battery,wpc_high_recovery_normal = <400>;
-  battery,wpc_low_threshold_normal = <0>;
-  battery,wpc_low_recovery_normal = <50>;
+  battery,temp_high_threshold_lpm = <600>;
+  battery,temp_high_recovery_lpm = <460>;
+  battery,temp_low_threshold_lpm = <(-50)>;
+  battery,temp_low_recovery_lpm = <0>;
   battery,full_check_type = <7>;
   battery,full_check_type_2nd = <7>;
   battery,full_check_count = <1>;
   battery,chg_gpio_full_check = <0>;
   battery,chg_polarity_full_check = <1>;
 
-  battery,chg_high_temp_1st = <580>;
-  battery,chg_high_temp_2nd = <580>;
-  battery,chg_high_temp_recovery = <200>;
+  battery,chg_high_temp_1st = <530>;
+  battery,chg_high_temp_2nd = <530>;
+  battery,chg_high_temp_recovery = <525>;
   battery,chg_charging_limit_current = <1300>;
   battery,chg_charging_limit_current_2nd = <1300>;
   battery,chg_skip_check_capacity = <10>;
   battery,chg_skip_check_time = <600>;
 
-  battery,wpc_high_temp = <390>;
-  battery,wpc_high_temp_recovery = <380>;
+  battery,wpc_high_temp = <400>;
+  battery,wpc_high_temp_recovery = <390>;
   battery,wpc_charging_limit_current = <450>;
 
   battery,wpc_delayed_current_en;
   battery,wpc_delayed_current = <860>;
   battery,wpc_delayed_current_time = <420>;
 
-  battery,mix_high_tbat = <990>;
-  battery,mix_high_tchg = <990>;
-  battery,mix_high_tbat_recov = <330>;
-  battery,mix_input_limit_current = <100>;
-  battery,mix_high_tbat_hv = <400>;
-  battery,mix_high_tchg_hv = <500>;
-  battery,mix_high_tbat_recov_hv = <370>;
-  battery,mix_input_limit_current_hv = <100>;
-
 
 
 
   battery,full_condition_type = <13>;
   battery,full_condition_soc = <93>;
-  battery,full_condition_vcell = <4250>;
+  battery,full_condition_vcell = <4275>;
 
   battery,recharge_check_count = <2>;
   battery,recharge_condition_type = <4>;
   battery,recharge_condition_soc = <98>;
-  battery,recharge_condition_vcell = <4300>;
+  battery,recharge_condition_vcell = <4325>;
 
-  battery,charging_total_time = <14400>;
-  battery,hv_charging_total_time = <10800>;
-  battery,normal_charging_total_time = <18000>;
-  battery,usb_charging_total_time = <36000>;
+  battery,charging_total_time = <21600>;
   battery,recharging_total_time = <5400>;
   battery,charging_reset_time = <0>;
 
@@ -5834,33 +5765,21 @@
   battery,discharging_adc_min = <1700>;
   battery,discharging_ntc_limit = <2750>;
 
-  battery,swelling_high_temp_block = <410>;
-  battery,swelling_high_temp_recov = <360>;
-  battery,swelling_low_temp_block = <100>;
-  battery,swelling_low_temp_recov = <150>;
-  battery,swelling_chg_current = <1150>;
-  battery,swelling_drop_float_voltage = <4150>;
-  battery,swelling_high_rechg_voltage = <4100>;
-  battery,swelling_low_rechg_voltage = <4000>;
+  battery,swelling_high_temp_block = <500>;
+  battery,swelling_high_temp_recov = <450>;
+  battery,swelling_low_temp_block = <50>;
+  battery,swelling_low_temp_recov = <100>;
+  battery,swelling_chg_current = <1300>;
+  battery,swelling_drop_float_voltage = <4200>;
+  battery,swelling_high_rechg_voltage = <4150>;
+  battery,swelling_low_rechg_voltage = <4050>;
   battery,swelling_block_time = <600>;
-  battery,swelling_wc_chg_current = <750>;
-
-
-  battery,age_data = <0 4350 4300 4250 93
-    200 4330 4280 4230 89
-    250 4310 4260 4210 85
-    300 4290 4240 4190 80
-    1000 4240 4190 4140 75>;
 
   io-channels = <&exynos_adc 1>, <&exynos_adc 3>, <&exynos_adc 6>, <&exynos_adc 5>, <&exynos_adc 7>;
   io-channel-names = "adc-temp", "chg-adc-temp", "in-bat-adc", "discharging-check-adc", "ntc-check-adc";
   #io-channel-cells = <5>;
   io-channel-ranges;
-
-  battery,cisd_cap_high_thr = <3600>;
-  battery,cisd_cap_low_thr = <3100>;
-  battery,cisd_cap_limit = <2860>;
-# 246 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_battery_06.dtsi"
+# 213 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_battery_08.dtsi"
   sdchg_ap {
    compatible = "samsung,sdchg_ap";
    sdchg,temperature_start = <600>;
@@ -5916,7 +5835,7 @@
   status = "disable";
   fuelgauge,fuel_alert_soc = <1>;
   fuelgauge,capacity_max = <1000>;
-  fuelgauge,capacity_max_margin = <300>;
+  fuelgauge,capacity_max_margin = <100>;
   fuelgauge,capacity_min = <0>;
   fuelgauge,capacity_calculation_type = <28>;
   fuelgauge,repeated_fuelalert;
@@ -5924,17 +5843,17 @@
   fuelgauge,using_hw_vempty;
   fuelgauge,v_empty = <0xA558>;
   fuelgauge,v_empty_origin = <0x7D54>;
-  fuelgauge,qrtable20 = <0x1780>;
-  fuelgauge,qrtable30 = <0x0F84>;
+  fuelgauge,qrtable20 = <0x1603>;
+  fuelgauge,qrtable30 = <0x1005>;
   fuelgauge,low_temp_limit = <100>;
   fuelgauge,low_temp_recovery = <120>;
-  fuelgauge,temp_cohot = <0x2332>;
-  fuelgauge,temp_cocold = <0x2332>;
-  fuelgauge,rcomp0 = <0x3C>;
-  fuelgauge,rcomp_charging = <0x3C>;
+  fuelgauge,temp_cohot = <0x1B45>;
+  fuelgauge,temp_cocold = <0x194D>;
+  fuelgauge,rcomp0 = <0x35>;
+  fuelgauge,rcomp_charging = <0x35>;
   fuelgauge,is_using_model_data;
   fuelgauge,type_str = "SDI";
-  fuelgauge,capacity = <0x14C2>;
+  fuelgauge,capacity = <0x1438>;
   fuelgauge,low_battery_comp_voltage = <3600>;
   fuelgauge,low_battery_table = <(-5000) 0 0 (-1250) 0 3320 (-750) 97 3451 (-100) 96 3461 0 0 3456>;
   fuelgauge,cv_data = <2565 680 2580
@@ -6024,7 +5943,6 @@
    290 997 31
    0 1000 0 >;
  };
-
  max77843-charger {
          status = "disable";
   battery,chg_gpio_en = <0>;
@@ -6033,12 +5951,13 @@
   battery,chg_polarity_status = <0>;
   battery,chg_float_voltage = <4350>;
  };
+
 };
-# 15 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts" 2
-# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_gpio_08.dtsi" 1
-# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_gpio_08.dtsi"
+# 15 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_gpio_06.dtsi" 1
+# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_gpio_06.dtsi"
 # 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos_gpio_config_macros.dtsi" 1
-# 13 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_gpio_08.dtsi" 2
+# 13 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_gpio_06.dtsi" 2
 
 
 &pinctrl_1 {
@@ -6069,8 +5988,6 @@
   gpd0-0 { samsung,pins = "gpd0-0"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpd0-1 { samsung,pins = "gpd0-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
-  gpd1-2 { samsung,pins = "gpd1-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
-  gpd1-3 { samsung,pins = "gpd1-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpd1-4 { samsung,pins = "gpd1-4"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpd1-5 { samsung,pins = "gpd1-5"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
@@ -6313,8 +6230,8 @@
   gpj1-2 { samsung,pins = "gpj1-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
  };
  sleep5: sleep-state {
-  gpj1-0 { samsung,pins = "gpj1-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
-  gpj1-1 { samsung,pins = "gpj1-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
+  gpj1-0 { samsung,pins = "gpj1-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpj1-1 { samsung,pins = "gpj1-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpj1-2 { samsung,pins = "gpj1-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
  };
 };
@@ -6389,12 +6306,10 @@
   gpr1-6 { samsung,pins = "gpr1-6"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpr1-7 { samsung,pins = "gpr1-7"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
-  gpr2-1 { samsung,pins = "gpr2-1"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpr2-3 { samsung,pins = "gpr2-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
   gpr2-4 { samsung,pins = "gpr2-4"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
 
-  gpr3-2 { samsung,pins = "gpr3-2"; samsung,pin-function = <0>; samsung,pin-pud = <0>; samsung,pin-drv = <0x0>; };
-  gpr3-3 { samsung,pins = "gpr3-3"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
+  gpr3-2 { samsung,pins = "gpr3-2"; samsung,pin-function = <0>; samsung,pin-pud = <1>; samsung,pin-drv = <0x0>; };
  };
  sleep9: sleep-state {
   gpr0-0 { samsung,pins = "gpr0-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
@@ -6417,21 +6332,21 @@
   gpr2-3 { samsung,pins = "gpr2-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpr2-4 { samsung,pins = "gpr2-4"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
 
-  gpr3-0 { samsung,pins = "gpr3-0"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
+  gpr3-0 { samsung,pins = "gpr3-0"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpr3-1 { samsung,pins = "gpr3-1"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
-  gpr3-2 { samsung,pins = "gpr3-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
-  gpr3-3 { samsung,pins = "gpr3-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpr3-2 { samsung,pins = "gpr3-2"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
+  gpr3-3 { samsung,pins = "gpr3-3"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <0>; };
   gpr3-4 { samsung,pins = "gpr3-4"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpr3-5 { samsung,pins = "gpr3-5"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
   gpr3-6 { samsung,pins = "gpr3-6"; samsung,pin-con-pdn = <3>; samsung,pin-pud-pdn = <0>; };
   gpr3-7 { samsung,pins = "gpr3-7"; samsung,pin-con-pdn = <2>; samsung,pin-pud-pdn = <1>; };
  };
 };
-# 16 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts" 2
-# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_modem-shannon.dtsi" 1
-# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_modem-shannon.dtsi"
-# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/modem-ss333-pdata.dtsi" 1
-# 14 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/modem-ss333-pdata.dtsi"
+# 16 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_modem-shannon_ds.dtsi" 1
+# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_modem-shannon_ds.dtsi"
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/modem-ss333-ds-pdata.dtsi" 1
+# 14 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/modem-ss333-ds-pdata.dtsi"
 / {
  mif_pdata {
   compatible = "sec_modem,modem_pdata";
@@ -6461,6 +6376,19 @@
     iod,dl_buffer_size = <4096>;
    };
    io_device_1 {
+    iod,name = "umts_ipc1";
+    iod,id = <236>;
+    iod,format = <0>;
+    iod,io_type = <0>;
+    iod,links = <0x400>;
+    iod,attrs = <0x82>;
+    iod,app = "RIL";
+    iod,ul_num_buffers = <16>;
+    iod,ul_buffer_size = <4096>;
+    iod,dl_num_buffers = <32>;
+    iod,dl_buffer_size = <4096>;
+   };
+   io_device_2 {
     iod,name = "umts_rfs0";
     iod,id = <245>;
     iod,format = <1>;
@@ -6473,7 +6401,7 @@
     iod,dl_num_buffers = <512>;
     iod,dl_buffer_size = <2048>;
    };
-   io_device_2 {
+   io_device_3 {
     iod,name = "umts_csd";
     iod,id = <1>;
     iod,format = <1>;
@@ -6486,7 +6414,7 @@
     iod,dl_num_buffers = <64>;
     iod,dl_buffer_size = <2048>;
    };
-   io_device_3 {
+   io_device_4 {
     iod,name = "umts_router";
     iod,id = <25>;
     iod,format = <1>;
@@ -6499,7 +6427,7 @@
     iod,dl_num_buffers = <16>;
     iod,dl_buffer_size = <2048>;
    };
-   io_device_4 {
+   io_device_5 {
     iod,name = "umts_dm0";
     iod,id = <28>;
     iod,format = <1>;
@@ -6511,19 +6439,6 @@
     iod,ul_buffer_size = <2048>;
     iod,dl_num_buffers = <128>;
     iod,dl_buffer_size = <2048>;
-   };
-   io_device_5 {
-    iod,name = "smd4";
-    iod,id = <26>;
-    iod,format = <1>;
-    iod,io_type = <0>;
-    iod,links = <0x400>;
-    iod,attrs = <0x82>;
-    iod,app = "CIQ_BRIDGE_DATA";
-    iod,ul_num_buffers = <16>;
-    iod,ul_buffer_size = <2048>;
-    iod,dl_num_buffers = <16>;
-    iod,dl_buffer_size = <4096>;
    };
    io_device_6 {
     iod,name = "ipc_loopback0";
@@ -6673,7 +6588,7 @@
   };
  };
 };
-# 13 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_modem-shannon.dtsi" 2
+# 13 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_modem-shannon_ds.dtsi" 2
 
 
 
@@ -6856,7 +6771,7 @@
   };
  };
 };
-# 17 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts" 2
+# 17 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
 # 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_fingerprint-sensor_00.dtsi" 1
 # 14 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_fingerprint-sensor_00.dtsi"
 / {
@@ -6947,7 +6862,59 @@
   };
  };
 };
-# 18 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts" 2
+# 18 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_motor.dtsi" 1
+# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_motor.dtsi"
+/ {
+ haptic {
+  haptic,duty = <33175>;
+  haptic,period = <33510>;
+ };
+};
+# 19 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
+# 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_svcled.dtsi" 1
+# 12 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_svcled.dtsi"
+/ {
+ rgb {
+  device_type = <1>;
+  normal_powermode_current = <10>;
+  low_powermode_current = <2>;
+  br_ratio_r = <450>;
+  br_ratio_g = <230>;
+  br_ratio_b = <700>;
+
+  normal_powermode_current_wh = <10>;
+  low_powermode_current_wh = <2>;
+  br_ratio_r_wh = <900>;
+  br_ratio_g_wh = <400>;
+  br_ratio_b_wh = <900>;
+
+  normal_powermode_current_bk = <10>;
+  low_powermode_current_bk = <2>;
+  br_ratio_r_bk = <450>;
+  br_ratio_g_bk = <200>;
+  br_ratio_b_bk = <500>;
+
+  normal_powermode_current_gd = <10>;
+  low_powermode_current_gd = <2>;
+  br_ratio_r_gd = <450>;
+  br_ratio_g_gd = <230>;
+  br_ratio_b_gd = <830>;
+
+  normal_powermode_current_bl = <10>;
+  low_powermode_current_bl = <2>;
+  br_ratio_r_bl = <600>;
+  br_ratio_g_bl = <230>;
+  br_ratio_b_bl = <830>;
+
+  normal_powermode_current_rd = <10>;
+  low_powermode_current_rd = <2>;
+  br_ratio_r_rd = <450>;
+  br_ratio_g_rd = <230>;
+  br_ratio_b_rd = <830>;
+ };
+};
+# 20 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
 # 1 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_mst.dtsi" 1
 # 13 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_mst.dtsi"
 / {
@@ -6985,15 +6952,16 @@
   };
  };
 };
-# 19 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zerolte_eur_open_08.dts" 2
+# 21 "/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/exynos7420-zeroflte_eur_open_06.dts" 2
+
 / {
- model = "Samsung ZERO LTE EUR rev07 board based on Exynos7420(EVT1), mPOP";
+ model = "Samsung ZERO-F LTE EUR rev06 board based on Exynos7420(EVT1), mPOP";
  model_info-chip = <7420>;
  model_info-platform = "android";
  model_info-subtype = "samsung";
- model_info-hw_rev = <11>;
- model_info-hw_rev_end = <255>;
- compatible = "samsung,ZERO LTE EUR EVT1 mPOP,r07", "samsung,exynos7420";
+ model_info-hw_rev = <10>;
+ model_info-hw_rev_end = <11>;
+ compatible = "samsung,ZERO-F LTE EUR EVT1 mPOP,r06", "samsung,exynos7420";
 
  spi_0: spi@14d20000 {
   /delete-property/ dma-mode;
@@ -7252,15 +7220,14 @@
    ssp-mcu-req = <&gpf4 5 0x01>;
    ssp-mcu-resp = <&gpf4 4 0x00>;
    ssp-acc-position = <0>;
-   ssp-mag-position = <6>;
+   ssp-mag-position = <0>;
    ssp-sns-combination = <0>;
-   ssp-acc-type = <1>;
    ssp,prox-hi_thresh = <2000>;
    ssp,prox-low_thresh = <1400>;
    ssp-ap-rev = <1>;
-   ssp-mag-array = <9930 866 (-228) 263 9197 121 (-135) 387 10378>;
+   ssp-mag-array = <10213 (-360) 154 (-206) 8673 (-59) (-66) (-59) 10479>;
    ssp-hw-rev = <3>;
-   ssp-glass-type = <1>;
+   ssp-glass-type = <0>;
 
    controller-data {
     cs-gpio = <&gpd6 3 0>;
@@ -7538,9 +7505,10 @@
     };
 
     ldo21_reg: LDO21 {
-     regulator-name = "key_led";
+     regulator-name = "vtouch_3.3v";
      regulator-min-microvolt = <3300000>;
      regulator-max-microvolt = <3300000>;
+     regulator-boot-on;
     };
 
     ldo22_reg: LDO22 {
@@ -7742,44 +7710,74 @@
   };
  };
 
- sec_thermistor@0 {
-  status = "okay";
+ pinctrl@13470000 {
 
-  adc_array = <205 216 227 238 249 260 271 282 293 303
-   314 324 335 346 356 366 377 388 398 408
-   418 436 454 472 489 506 520 534 548 561
-   575 588 602 619 636 655 674 697 720 737
-   754 775 796 819 842 857 872 904 936 953
-   974 993 1012 1031 1050 1070 1087 1104 1121 1138
-   1155 1175 1205 1232 1259 1286 1306 1326 1345 1365
-   1385 1403 1421 1439 1457 1475 1492 1509 1526 1543
-   1560 1579 1598 1616 1635 1654 1669 1684 1699 1713
-   1728 1740 1753 1766 1778 1790 1798 1806 1814 1822
-   1830 1839 1848 1856 1864 1872 1880 1888 1896 1904
-   1912>;
+  cfg_i2c: cfg-i2c {
+   samsung,pins = "gpd1-3", "gpd1-2";
+   samsung,pin-function = <3>;
+   samsung,pin-pud = <0>;
+   samsung,pin-drv = <0>;
+  };
+  cfg_gpio: cfg_gpio {
+   samsung,pins = "gpd1-3", "gpd1-2";
+   samsung,pin-function = <0>;
+   samsung,pin-pud = <0>;
+   samsung,pin-drv = <0>;
+  };
  };
 
- sec_thermistor@2 {
-  status = "okay";
+ pinctrl@10580000 {
 
-  adc_array = <205 216 227 238 249 260 271 282 293 303
-   314 324 335 346 356 366 377 388 398 408
-   418 436 454 472 489 506 520 534 548 561
-   575 588 602 619 636 655 674 697 720 737
-   754 775 796 819 842 857 872 904 936 953
-   974 993 1012 1031 1050 1070 1087 1104 1121 1138
-   1155 1175 1205 1232 1259 1286 1306 1326 1345 1365
-   1385 1403 1421 1439 1457 1475 1492 1509 1526 1543
-   1560 1579 1598 1616 1635 1654 1669 1684 1699 1713
-   1728 1740 1753 1766 1778 1790 1798 1806 1814 1822
-   1830 1839 1848 1856 1864 1872 1880 1888 1896 1904
-   1912>;
+  cfg_irq: cfg-irq {
+   samsung,pins = "gpa0-0";
+   samsung,pin-function = <0xf>;
+   samsung,pin-pud = <3>;
+   samsung,pin-drv = <0>;
+  };
+  cfg_input: cfg-input {
+   samsung,pins = "gpa0-0";
+   samsung,pin-function = <0>;
+   samsung,pin-pud = <1>;
+   samsung,pin-drv = <0>;
+  };
+  sub_det: sub-det {
+   samsung,pins = "gpa3-0";
+   samsung,pin-function = <0>;
+   samsung,pin-pud = <0>;
+   samsung,pin-drv = <0>;
+  };
+ };
+
+ hsi2c@14E70000 {
+  status = "okay";
+  pinctrl-names = "default","on_i2c","off_i2c";
+  pinctrl-0 = <&hs_i2c3_bus>;
+  pinctrl-1 = <&cfg_i2c>;
+  pinctrl-2 = <&cfg_gpio>;
+  touchkey@20 {
+   pinctrl-names = "on_irq","off_irq","sub_det";
+   pinctrl-0 = <&cfg_irq>;
+   pinctrl-1 = <&cfg_input>;
+   pinctrl-2 = <&sub_det>;
+   compatible = "cypress,cypress_touchkey";
+   reg = <0x20>;
+   interrupts = <0 0 0>;
+   interrupt-parent = <&gpa0>;
+   cypress,sda-gpio = <&gpd1 2 0>;
+   cypress,scl-gpio = <&gpd1 3 0>;
+   cypress,irq-gpio = <&gpa0 0 1>;
+   cypress,sub-det = <&gpa3 0 0>;
+   cypress,ap-io-power = "true";
+   cypress,ic-stabilizing-time = <150>;
+   cypress,boot-on-ldo = "true";
+   cypress,fw_path = "cypress/cypress_zerof.fw";
+  };
  };
 
  hsi2c@14E10000 {
   touchscreen@20 {
-   stm,num_touchkey = <2>;
-   stm,regulator_tk_led = "key_led";
+   stm,firmware_name = "tsp_stm/stm_z1.fw";
+   stm,project_name = "ZEROF", "G920";
   };
  };
 
@@ -7792,15 +7790,19 @@
   vqmmc-supply = <&ldo2_reg>;
  };
 
+ decon_0: decon_fb {
+  gpio_pcd = <&gpa1 2 0>;
+ };
+
  dsim_0: dsim@0x13900000 {
   gpios = <&gpr3 0 0x1>;
   regulator_30V = "VCC_3.0V_LCD";
   regulator_18V = "VCC_DISPLAY_1.8V";
   regulator_16V = "VDD_1P6_DDR";
-  lcd_info = <&s6e3hf2_wqhd>;
+  lcd_info = <&s6e3ha2_wqhd>;
  };
 
- s6e3hf2_wqhd: s6e3hf2_wqhd_panel {
+ s6e3ha2_wqhd: s6e3ha2_wqhd_panel {
   mode = <2>;
   resolution = <1440 2560>;
   size = <63 112>;
@@ -7812,5 +7814,9 @@
   mic = <1>;
   mic_ver = <2>;
   type_of_ddi = <0>;
+ };
+
+ simslot_count {
+  status = "okay";
  };
 };
