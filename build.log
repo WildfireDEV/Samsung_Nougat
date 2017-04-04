@@ -3,8 +3,8 @@
 START : FUNC_BUILD_KERNEL
 ==============================================
 
-build common config=exynos7420-zerolte_EdYoBlue_defconfig 
-build variant config=zerolte 
+build common config=exynos7420-zeroflte_EdYoBlue_defconfig 
+build variant config=zeroflte 
 rm files in : /home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/*.dtb
 rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/dts/*.dtb': Aucun fichier ou dossier de ce type
 rm: impossible de supprimer '/home/remy/work/android/kernel/exynos7420/kernel/arch/arm64/boot/boot.img-dtb': Aucun fichier ou dossier de ce type
@@ -19,41 +19,44 @@ INFO: CC is /home/remy/work/android/kernel/exynos7420/aarch64-sabermod-7.0/bin/a
   CHK     include/generated/uapi/linux/version.h
   CHK     include/generated/utsrelease.h
   CC      scripts/mod/devicetable-offsets.s
+/home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
   GEN     scripts/mod/devicetable-offsets.h
   HOSTCC  scripts/mod/file2alias.o
   CALL    scripts/checksyscalls.sh
-/home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
   HOSTLD  scripts/mod/modpost
 make[1]: rien à faire pour « dtbs ».
   CHK     include/generated/compile.h
   CC      drivers/battery/max77843_charger.o
   LD      firmware/built-in.o
-  LD      drivers/battery/built-in.o
   CC      drivers/gud/TlcTui/platforms/exynos7420/tui-hal.o
-  LD      drivers/input/keyboard/built-in.o
-  LD      drivers/input/built-in.o
   LD      drivers/gud/TlcTui/TlcTui.o
   LD      drivers/gud/TlcTui/built-in.o
   LD      drivers/gud/built-in.o
+  CC      drivers/input/keyboard/cypress_20075/cypress-touchkey.o
+  LD      drivers/battery/built-in.o
+  CC      drivers/input/keyboard/cypress_20075/cy8cmbr_swd.o
   LD      drivers/misc/built-in.o
 /home/remy/work/android/kernel/exynos7420/kernel/drivers/net/wireless/bcmdhd4358/Makefile:208: Not found Android version file. Set as Legacy mode
   CC      drivers/video/exynos/decon/panels/dsim_panel.o
-  CC      drivers/video/exynos/decon/panels/dimming_core.o
-  CC      drivers/video/exynos/decon/panels/lcd_sysfs.o
   CC      drivers/video/exynos/decon/vpp/vpp_drv.o
-  CC      drivers/video/exynos/decon/panels/s6e3hf2_wqhd_lcd_ctrl.o
-  CC      drivers/video/exynos/decon/panels/dsim_backlight.o
-  CC      drivers/video/exynos/decon/decon_core.o
+  LD      drivers/input/keyboard/cypress_20075/built-in.o
+  LD      drivers/input/keyboard/built-in.o
+  LD      drivers/input/built-in.o
   CC      drivers/video/exynos/decon/vpp/vpp_regs.o
   CC      drivers/video/exynos/decon/vpp/vpp_coef.o
-  LD      drivers/video/exynos/decon/panels/built-in.o
+  CC      drivers/video/exynos/decon/panels/dimming_core.o
+  CC      drivers/video/exynos/decon/decon_core.o
   CC      drivers/video/exynos/decon/decon-int_drv.o
-  CC      drivers/video/exynos/decon/decon-ext_drv.o
   LD      drivers/video/exynos/decon/vpp/vpp.o
   LD      drivers/video/exynos/decon/vpp/built-in.o
+  CC      drivers/video/exynos/decon/decon-ext_drv.o
+  CC      drivers/video/exynos/decon/panels/lcd_sysfs.o
   CC      drivers/video/exynos/decon/decon_helper.o
+  CC      drivers/video/exynos/decon/panels/s6e3ha2_s6e3ha0_wqhd_lcd_ctrl.o
+  CC      drivers/video/exynos/decon/panels/dsim_backlight.o
   CC      drivers/video/exynos/decon/dsim_drv.o
   CC      drivers/video/exynos/decon/dsim_reg_7420.o
+  LD      drivers/video/exynos/decon/panels/built-in.o
   CC      drivers/video/exynos/decon/decon_reg_7420.o
   LD      drivers/video/exynos/decon/dsim.o
   LD      drivers/video/exynos/decon/decon.o
@@ -75,9 +78,9 @@ make[1]: rien à faire pour « dtbs ».
   SORTEX  vmlinux
   SYSMAP  System.map
   FIPS : Generating hmac of fmp and updating vmlinux... 
-HMAC-SHA256(builtime_bytes.bin)= 6c4b8929b3bf637d78af9ddd630a3ef6f95e730b6bb2f4dc11c8fdba5efae4fe
+HMAC-SHA256(builtime_bytes.bin)= 0cb2ebe8f3d847eb2e9920d6826ad49dbd04ba46ecddacd35f70bdf1caf16e62
   FIPS : Generating hmac of crypto and updating vmlinux... 
-HMAC-SHA256(builtime_bytes.bin)= 5bd69010f02f9b52865cbbccc0089316660d1673b375172ad6a1ab0f109b6b19
+HMAC-SHA256(builtime_bytes.bin)= 6311b1343547318bccd6f2ddd1119b4e8082a570bbaa445bfce98a9592e25760
   OBJCOPY arch/arm64/boot/Image
   Building modules, stage 2.
   MODPOST 2 modules
@@ -85,22 +88,22 @@ HMAC-SHA256(builtime_bytes.bin)= 5bd69010f02f9b52865cbbccc0089316660d1673b375172
 /home/remy/work/android/kernel/exynos7420/kernel/scripts/Makefile.fwinst:45: la cible « /lib/firmware/tsp_stm/stm_z1.fw » apparaît plus d'une fois dans la même règle.
 /home/remy/work/android/kernel/exynos7420/kernel/scripts/Makefile.fwinst:45: la cible « /lib/firmware/abov/abov_valley.fw » apparaît plus d'une fois dans la même règle.
 Processing dts files...
-=> Processing: exynos7420-zerolte_eur_open_06.dts
-=> Generating: exynos7420-zerolte_eur_open_06.dtb
+=> Processing: exynos7420-zeroflte_eur_open_ds_00.dts
+=> Generating: exynos7420-zeroflte_eur_open_ds_00.dtb
 Warning (device_type_is_string): "device_type" property in /rgb is not a string
-=> Processing: exynos7420-zerolte_eur_open_07.dts
-=> Generating: exynos7420-zerolte_eur_open_07.dtb
+=> Processing: exynos7420-zeroflte_eur_open_06.dts
+=> Generating: exynos7420-zeroflte_eur_open_06.dtb
 Warning (device_type_is_string): "device_type" property in /rgb is not a string
-=> Processing: exynos7420-zerolte_eur_open_08.dts
-=> Generating: exynos7420-zerolte_eur_open_08.dtb
+=> Processing: exynos7420-zeroflte_eur_open_07.dts
+=> Generating: exynos7420-zeroflte_eur_open_07.dtb
 Warning (device_type_is_string): "device_type" property in /rgb is not a string
 Generating dtb.img...
-=> Found compatible entry: samsung,ZERO LTE EUR EVT1 mPOP,r05
-    (chip: 7420, hw_rev: 8, hw_rev_end: 9)
-=> Found compatible entry: samsung,ZERO LTE EUR EVT1 mPOP,r06
-    (chip: 7420, hw_rev: 10, hw_rev_end: 10)
-=> Found compatible entry: samsung,ZERO LTE EUR EVT1 mPOP,r07
-    (chip: 7420, hw_rev: 11, hw_rev_end: 255)
+=> Found compatible entry: samsung,ZERO-F LTE EUR EVT1 mPOP,r06
+    (chip: 7420, hw_rev: 10, hw_rev_end: 11)
+=> Found compatible entry: samsung,ZERO-F LTE EUR EVT1 mPOP,r09
+    (chip: 7420, hw_rev: 12, hw_rev_end: 255)
+=> Found compatible entry: samsung,ZERO-F LTE DS EVT1 mPOP,r00
+    (chip: 7420, hw_rev: 35, hw_rev_end: 35)
 Done.
 
 =================================
@@ -110,8 +113,6 @@ END   : FUNC_BUILD_KERNEL
 [3J[H[2J 
 Android Image Kitchen - RepackImg Script
 by osm0sis @ xda-developers
- 
-Warning: Overwriting existing files!
  
 Packing ramdisk...
  
@@ -131,4 +132,4 @@ dtb = boot.img-dtb
 Building image...
  
 Done!
-Total compile time is 55 seconds
+Total compile time is 30 seconds

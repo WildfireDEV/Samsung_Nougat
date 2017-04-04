@@ -1,7 +1,7 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 optimized by remyz17
 
-export MODEL=zerolte
+export MODEL=zeroflte
 export ARCH=arm64
 export BUILD_CROSS_COMPILE=/home/remy/work/android/kernel/exynos7420/aarch64-sabermod-7.0/bin/aarch64-
 export BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
@@ -117,26 +117,26 @@ FUNC_BUILD_KERNEL()
 FUNC_BUILD_RAMDISK()
 {
 	mv $RDIR/arch/$ARCH/boot/Image $RDIR/arch/$ARCH/boot/boot.img-zImage
-	mv $RDIR/arch/$ARCH/boot/dtb.img $RDIR/arch/$ARCH/boot/boot.img-dtb
+	#mv $RDIR/arch/$ARCH/boot/dtb.img $RDIR/arch/$ARCH/boot/boot.img-dtb
 
 	case $MODEL in
 	zeroflte)
 		rm -f $RDIR/ramdisk/SM-G920F/split_img/boot.img-zImage
-		rm -f $RDIR/ramdisk/SM-G920F/split_img/boot.img-dtb
+		#rm -f $RDIR/ramdisk/SM-G920F/split_img/boot.img-dtb
 		mv -f $RDIR/arch/$ARCH/boot/boot.img-zImage $RDIR/ramdisk/SM-G920F/split_img/boot.img-zImage
-		mv -f $RDIR/arch/$ARCH/boot/boot.img-dtb $RDIR/ramdisk/SM-G920F/split_img/boot.img-dtb
+		#mv -f $RDIR/arch/$ARCH/boot/boot.img-dtb $RDIR/ramdisk/SM-G920F/split_img/boot.img-dtb
 		cd $RDIR/ramdisk/SM-G920F
 		./repackimg.sh
 		echo SEANDROIDENFORCE >> boots6f.img
 		;;
 	zerolte)
 		rm -f $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImage
-		rm -f $RDIR/ramdisk/SM-G925F/split_img/boot.img-dtb
+		#rm -f $RDIR/ramdisk/SM-G925F/split_img/boot.img-dtb
 		mv -f $RDIR/arch/$ARCH/boot/boot.img-zImage $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImage
-		mv -f $RDIR/arch/$ARCH/boot/boot.img-dtb $RDIR/ramdisk/SM-G925F/split_img/boot.img-dtb
+		#mv -f $RDIR/arch/$ARCH/boot/boot.img-dtb $RDIR/ramdisk/SM-G925F/split_img/boot.img-dtb
 		cd $RDIR/ramdisk/SM-G925F
 		./repackimg.sh
-		echo SEANDROIDENFORCE >> image-new.img
+		echo SEANDROIDENFORCE >> boots6e.img
 		;;
 	*)
 		echo "Unknown device: $MODEL"
