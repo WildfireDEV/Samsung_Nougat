@@ -8,7 +8,7 @@ static char proc_cmdline[COMMAND_LINE_SIZE];
 
 static int cmdline_proc_show(struct seq_file *m, void *v)
 {
-	seq_printf(m, "%s\n", proc_cmdline);
+		seq_printf(m, "%s\n", proc_cmdline);
 	return 0;
 }
 
@@ -26,6 +26,7 @@ static const struct file_operations cmdline_proc_fops = {
 
 static int __init proc_cmdline_init(void)
 {
+	/* SafetyNet bypass: show androidboot.verifiedbootstate=green */
 	char *a1, *a2;
 
 	a1 = strstr(saved_command_line, "androidboot.verifiedbootstate=");
