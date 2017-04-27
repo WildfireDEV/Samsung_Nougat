@@ -1,6 +1,6 @@
 VERSION = 3
 PATCHLEVEL = 10
-SUBLEVEL = 61
+SUBLEVEL = 106
 EXTRAVERSION =
 NAME = TOSSUG Baby Fish
 
@@ -158,6 +158,7 @@ VPATH		:= $(srctree)$(if $(KBUILD_EXTMOD),:$(KBUILD_EXTMOD))
 
 export srctree objtree VPATH
 
+CCACHE := ccache 
 
 # SUBARCH tells the usermode build what the underlying arch is.  That is set
 # first, and if a usermode build is happening, the "ARCH=um" on the command
@@ -470,8 +471,10 @@ KBUILD_CFLAGS += -DANDROID_MAJOR_VERSION=$(MAJOR_VERSION)
 SELINUX_DIR=$(shell $(CONFIG_SHELL) $(srctree)/scripts/find_matching_major.sh "$(srctree)" "security/selinux" "$(ANDROID_MAJOR_VERSION)")
 SDCARDFS_DIR=$(shell $(CONFIG_SHELL) $(srctree)/scripts/find_matching_version.sh "$(srctree)" "fs/sdcardfs" "$(ANDROID_VERSION)")
 else
-export ANDROID_VERSION=990000
-KBUILD_CFLAGS += -DANDROID_VERSION=990000
+export ANDROID_VERSION=700000
+KBUILD_CFLAGS += -DANDROID_VERSION=700000
+export ANDROID_MAJOR_VERSION=7
+KBUILD_CFLAGS += -DANDROID_MAJOR_VERSION=7
 endif
 PHONY += replace_dirs
 replace_dirs:
@@ -482,6 +485,7 @@ ifneq ($(PLATFORM_VERSION), )
 	@echo "replace sdcardfs from $(SDCARDFS_DIR)"
 	$(Q)$(CONFIG_SHELL) $(srctree)/scripts/replace_dir.sh "$(srctree)" "fs/sdcardfs" "$(SDCARDFS_DIR)"
 endif
+
 # To make sure we do not include .config for any of the *config targets
 # catch them early, and hand them over to scripts/kconfig/Makefile
 # It is allowed to specify more targets when calling make, including
@@ -610,6 +614,9 @@ endif # $(dot-config)
 # This allow a user to issue only 'make' to build a kernel including modules
 # Defaults to vmlinux, but the arch makefile usually adds further targets
 all: vmlinux
+
+KBUILD_CFLAGS	+= $(call cc-option,-fno-delete-null-pointer-checks,)
+KBUILD_CFLAGS	+= $(call cc-disable-warning,maybe-uninitialized,)
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os $(call cc-disable-warning,maybe-uninitialized,)
