@@ -1,6 +1,6 @@
 /*
  *
- * (C) COPYRIGHT 2011-2015 ARM Limited. All rights reserved.
+ * (C) COPYRIGHT 2012-2013, 2015 ARM Limited. All rights reserved.
  *
  * This program is free software and is provided to you under the terms of the
  * GNU General Public License version 2 as published by the Free Software
@@ -17,16 +17,12 @@
 
 
 
-#include <linux/atomic.h>
-#include <linux/mempool.h>
-#include <linux/slab.h>
+#ifndef _KBASE_CPU_VEXPRESS_H_
+#define _KBASE_CPU_VEXPRESS_H_
 
-/* raw page handling */
-struct kbase_mem_allocator {
-	struct kbase_device *kbdev;
-	atomic_t            free_list_size;
-	unsigned int        free_list_max_size;
-	struct mutex        free_list_lock;
-	struct list_head    free_list_head;
-	struct shrinker     free_list_reclaimer;
-};
+/**
+ * Versatile Express implementation of @ref kbase_cpu_clk_speed_func.
+ */
+int kbase_get_vexpress_cpu_clock_speed(u32 *cpu_clock);
+
+#endif				/* _KBASE_CPU_VEXPRESS_H_ */
