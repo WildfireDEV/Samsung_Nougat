@@ -1,0 +1,1 @@
+cmd_drivers/gpu/arm/t7xx/r15p0/built-in.o :=  /home/builder/toolchain/5.3/bin/aarch64-linux-android-ld -EL    -r -o drivers/gpu/arm/t7xx/r15p0/built-in.o drivers/gpu/arm/t7xx/r15p0/platform/built-in.o drivers/gpu/arm/t7xx/r15p0/mali_kbase.o 
