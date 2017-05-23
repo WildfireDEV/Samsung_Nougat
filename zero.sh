@@ -130,10 +130,12 @@ FUNC_BUILD_RAMDISK()
 		echo SEANDROIDENFORCE >> boots6f.img
 		;;
 	zerolte)
+		cd $RDIR/ramdisk/SM-G925F
+		./unpackimg.sh
+		cd ~
+		cd Samsung_Nougat
 		rm -f $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImage
-		#rm -f $RDIR/ramdisk/SM-G925F/split_img/boot.img-dtb
-		mv -f $RDIR/arch/$ARCH/boot/boot.img-zImage $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImage
-		#mv -f $RDIR/arch/$ARCH/boot/boot.img-dtb $RDIR/ramdisk/SM-G925F/split_img/boot.img-dtb
+		mv -f $RDIR/arch/$ARCH/boot/boot.img-zImage $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImageZ
 		cd $RDIR/ramdisk/SM-G925F
 		./repackimg.sh
 		echo SEANDROIDENFORCE >> boots6e.img
