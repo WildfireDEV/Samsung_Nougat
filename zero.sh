@@ -133,7 +133,7 @@ FUNC_BUILD_RAMDISK()
 		cd $RDIR/ramdisk/SM-G925F
 		./unpackimg.sh
 		cd ~
-		cd Samsung_Nougat
+		cd H_Kernel
 		rm -f $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImage
 		mv -f $RDIR/arch/$ARCH/boot/boot.img-zImage $RDIR/ramdisk/SM-G925F/split_img/boot.img-zImage
 		cd $RDIR/ramdisk/SM-G925F
