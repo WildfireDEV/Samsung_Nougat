@@ -1,9 +1,9 @@
 #!/bin/bash
-# kernel build script by Tkkg1994 optimized by remyz17
+# kernel build script by Tkkg1994 optimized by remyz17 & WildfireDEV
 
 export MODEL=zeroflte
 export ARCH=arm64
-export BUILD_CROSS_COMPILE=/home/builder/toolchain/5.3/bin/aarch64-linux-android-
+export BUILD_CROSS_COMPILE=/home/builder1/toolchain/5.3/bin/aarch64-linux-android-
 export BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
 
 RDIR=$(pwd)

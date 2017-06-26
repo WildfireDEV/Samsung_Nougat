@@ -1,9 +1,9 @@
 #!/bin/bash
-# kernel build script by Tkkg1994 optimized by remyz17
+# kernel build script by Tkkg1994 optimized by remyz17 & WildfireDEV
 
 export MODEL=zerolte
 export ARCH=arm64
-export BUILD_CROSS_COMPILE=/home/builder/toolchain/5.3/bin/aarch64-linux-android-
+export BUILD_CROSS_COMPILE=/home/builder1/toolchain/5.3/bin/aarch64-linux-android-
 export BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
 
 RDIR=$(pwd)
@@ -18,10 +18,10 @@ DTB_PADDING=0
 
 if [ $MODEL = zerolte ]
 then
-	KERNEL_DEFCONFIG=exynos7420-zerolte_EdYoBlue_defconfig
+	KERNEL_DEFCONFIG=exynos7420-zerolte_defconfig
 else if [ $MODEL = zeroflte ]
 then
-	KERNEL_DEFCONFIG=exynos7420-zeroflte_EdYoBlue_defconfig
+	KERNEL_DEFCONFIG=exynos7420-zeroflte_defconfig
 fi
 fi
 
