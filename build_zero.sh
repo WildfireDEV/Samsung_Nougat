@@ -1,9 +1,9 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 optimized by remyz17
 
-export MODEL=zerolte
+export MODEL=zeroflte
 export ARCH=arm64
-export BUILD_CROSS_COMPILE=/home/remy/work/android/kernel/exynos7420/aarch64-sabermod-7.0/bin/aarch64-
+export BUILD_CROSS_COMPILE=/home/builder/toolchain/5.3/bin/aarch64-linux-android-
 export BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
 
 RDIR=$(pwd)
