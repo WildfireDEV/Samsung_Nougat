@@ -168,7 +168,7 @@ extern void dhd_dump_eapol_4way_message(char *dump_data, bool direction);
 
 #include <linux/moduleparam.h>
 
-static int wl_divide = 1;
+static int wl_divide = 5;
 module_param(wl_divide, int, 0644);
 
 /* Maximum STA per radio */
