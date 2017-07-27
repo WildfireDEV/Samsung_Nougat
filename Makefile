@@ -384,7 +384,7 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
-		   -Wno-error-implicit-function-declaration \
+		   -Werror-implicit-function-declaration \
 		   -Wno-format-security -Wno-logical-not-parentheses \
 		   -fno-delete-null-pointer-checks \
 		   -fdiagnostics-show-option -fno-pic \
